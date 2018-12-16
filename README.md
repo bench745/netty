@@ -22,3 +22,4 @@ netty.py --
                 |--> train , trains a network with iteration
                 |--> run , calculates the networks output from a given input
                 '--> disp , prints out the networks weigth values to the console
+
