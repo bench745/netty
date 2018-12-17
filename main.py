@@ -9,8 +9,14 @@ ins = [[0,0,0],
        [1,1,0],
        [1,1,1]]
 
-# the training outputs
-outs = [0,1,0,1,0,0,1]
+# the training outputs [prob of one, prob of zero]
+outs = [[0],
+        [1],
+        [0],
+        [1],
+        [0],
+        [0],
+        [1]]
 
 #the pattern it should find is that the output is equal to the third input
 

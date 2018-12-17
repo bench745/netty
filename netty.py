@@ -1,4 +1,9 @@
-#based on https://medium.com/technology-invention-and-more/how-to-build-a-simple-neural-network-in-9-lines-of-python-code-cc8f23647ca1
+#back propergation to be implemented within the neurone ajust subclass
+#resources:
+#https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
+#https://medium.com/datadriveninvestor/math-neural-network-from-scratch-in-python-d6da9f29ce65
+
+
 import random
 import time
 
@@ -47,10 +52,10 @@ class neurone(object):
     def ajust(self, error):
         '''ajusts the internal input weights of the node based on the error'''
         
-        sigOut = sigmoidGradientFunct(self.outputed)  # work out the gradient of the curve at the output pos
+        dy_by_d_out = sigmoidGradientFunct(self.outputed)  # work out the gradient of the curve at the output pos
         
         for i in range(len(self.inputWeights)):  # ajust each weight
-            ajustmentFactor = error * self.inputed[i] * sigOut  # calc adj fact, the overall error * the inputed data (so 0 have no effect) * sigout (so when the network is sure we dont ajust hugly)
+            ajustmentFactor = error * self.inputed[i] * dy_by_d_out  # calc adj fact, the overall error * the inputed data (so 0 have no effect) * sigout (so when the network is sure we dont ajust hugly)
             self.inputWeights[i] += ajustmentFactor  # ajust the weighting
 
 
@@ -109,15 +114,16 @@ class net(object):
             raise AttributeError('len(trainingInputs) must equal len(trainingOutputs)')
 
         for i in range(iters):  # for the number of iterations
-            
             for j in range(len(trainingInputs)):  # for each peice of training data
                 out = self.run(trainingInputs[j])  # run the network and get the output
-                error = trainingOutputs[j] - out  # compare the output with correct answer is kind hacky
+
+                error = []  # stored the error of the output in its parts
+                for k in range(len(trainingOutputs[j])):
+                    error.append(trainingOutputs[j][k] - out[k])  # compare the output parts with correct answers parts
 
                 for k in range(len(self.net)):  # run ajust on all the nodes
-                    
                     for l in range(len(self.net[k])):
-                        self.net[k][l].ajust(error)
+                        self.net[k][l].ajust(sum( [pow(error[m],2) for m in range(len(error))] ) / len(error))  # run ajust on the on the mean of the error at the output squared 
 
 
     # runs the network with given input data
@@ -133,7 +139,7 @@ class net(object):
                 out.append(self.net[i][j].think(ins))  # have it think with the input data ins, and append to out
             ins = out  # set up to feed the output into the next layer
 
-        return out[0]  # return the final output #####################################################################the [0] is there to ensure ther is only one output VERY hacky at some point i will improve to supporty training ect with multiple outputs
+        return out  # return the final output
 
 
     # displays the network
