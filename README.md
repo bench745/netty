@@ -1,5 +1,5 @@
 # netty
-a VERY simplistic set of objects for creating neural networks
+a VERY simplistic set of objects for creating fully connected neural networks
 
 Disclaimer:
 Only tested with a single node, although could work for more complexe networks.
