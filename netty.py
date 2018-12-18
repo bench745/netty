@@ -123,7 +123,7 @@ class net(object):
 
                 for k in range(len(self.net)):  # run ajust on all the nodes
                     for l in range(len(self.net[k])):
-                        self.net[k][l].ajust(sum( [0.5 * pow(error[m],2) for m in range(len(error))] ) / len(error))  # run ajust on the on the mean of the error at the output squared 
+                        self.net[k][l].ajust(sum( [0.5 * pow(error[m],2) for m in range(len(error))] ))  # run ajust on the on the the total of (0.5 times the errors at the output squared) 
 
 
     # runs the network with given input data
