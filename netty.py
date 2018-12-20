@@ -33,6 +33,7 @@ class neurone(object):
 
     # a store of the data from the last think
     inputed = []
+    answered = 0
     outputed = 0
 
 
@@ -59,6 +60,18 @@ class neurone(object):
             self.inputWeights[i] += ajustmentFactor  # ajust the weighting
 
 
+    # a function that will inplement back propergation u
+    def trialAjust(self, totalError, targets, stepsFromOutput):
+        '''total error is the error of the overall system
+           targets is a list in the form [target out 0, target out 1, ..., target out n]
+           stepsFromOutput is the number of layers back from the output layer that the node is.'''
+        # total error - used in the partial derivitives
+        # targets - //
+        # stepsFromOutput used in finding delta totalError by delta outputed
+
+        pass
+
+
     def think(self, data):
         '''returns an output based on the input'''
         
@@ -67,6 +80,8 @@ class neurone(object):
         tot = 0  # the total of the inputs*the weights
         for i in range(len(self.inputWeights)):
             tot += self.inputWeights[i] * data[i]
+
+        self.answered = tot  # remeber our value pre normalisation
 
         out = sigmoid(tot)  # calculate the sigmoid mapping
         self.outputed = out  # record the output of the neurone
