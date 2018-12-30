@@ -2,7 +2,7 @@
 a VERY simplistic set of objects for creating fully connected neural networks
 
 Disclaimer:
-Only tested with a single node, although could work for more complexe networks.
+Incomplete and nonfunctional. 
 Not in anyway suitible for implementation anywhere. 
 Written as a learning excersize, so deffinatly flawed.
 
