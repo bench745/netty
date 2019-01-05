@@ -17,6 +17,7 @@ netty.py -.
 - net , an object that is used to manage a network
 	- __init__ , creats a network of a given topology (with restrictions)
 	- train , trains a network with iteration
+	- trainProperly , implements back propegation properly
  	- run , calculates the networks output from a given input
  	- disp , prints out the networks weigth values to the console
 
