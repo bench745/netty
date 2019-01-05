@@ -7,7 +7,7 @@ Not in anyway suitible for implementation anywhere.
 Written as a learning excersize, so deffinatly flawed.
 
 Structure:
-netty.py -.
+netty.py -
 - e , the mathmaticle constant
 - sigmoid , a function such that y = sigmoid(x) plots the sigmoid curve
 - neurone , an object that forms one node in a network
