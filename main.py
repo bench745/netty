@@ -26,8 +26,8 @@ n = netty.net(3, [1])
 # display the raw nets weight values
 n.disp()
 
-# train the net using the training data above over 100 iterations
-n.train(ins, outs, 10000)
+# train the net using the training data above over 1 iteration and with a learning rate of 1
+n.trainProperly(ins, outs, 10000, 0.1)
 
 # display the new weight values
 n.disp()
