@@ -8,7 +8,7 @@ Written as a learning excersize, so deffinatly flawed.
 
 Structure:
 netty.py -
-- e , the mathmaticle constant
+- e , the mathematicle constant
 - sigmoid , a function such that y = sigmoid(x) plots the sigmoid curve
 - neurone , an object that forms one node in a network
 	- __init__ , creats a neurone object
